@@ -26,6 +26,13 @@ public class ThreadPoolExecutorDemo {
 
     public static void main(String[] args) {
 
+        /**
+        // Using default thread factory and default abort policy provided by Executors/ThreadPoolExecutor
+        ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(1, 1, 1, TimeUnit.HOURS, new ArrayBlockingQueue<>(10), 
+                                                                 Executors.defaultThreadFactory(), 
+                                                                 new ThreadPoolExecutor.AbortPolicy());
+       */
+
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
                 3,                           // core pool size
                 5,                           // maximum pool size
