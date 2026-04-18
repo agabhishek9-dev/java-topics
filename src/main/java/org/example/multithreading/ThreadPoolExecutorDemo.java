@@ -33,6 +33,7 @@ public class ThreadPoolExecutorDemo {
                                                                  new ThreadPoolExecutor.AbortPolicy());
        */
 
+        // Here we are using custom thread factory and custom rejected handler
         ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(
                 3,                           // core pool size
                 5,                           // maximum pool size
