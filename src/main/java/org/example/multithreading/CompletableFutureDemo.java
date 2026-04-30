@@ -46,7 +46,8 @@ public class CompletableFutureDemo {
 
         // ---------------------------------------------------
         // 2) thenApply()
-        // Transforms the result synchronously in the same chain
+        // Transforms the result synchronously in the same chain.
+        // Used for simple transformations. It takes the result of the previous stage and applies a function to it
         // ---------------------------------------------------
         CompletableFuture<String> future2 = CompletableFuture.supplyAsync(() -> {
             return "Hello, Abhishek ";
@@ -74,8 +75,9 @@ public class CompletableFutureDemo {
 
         // ---------------------------------------------------
         // 4) thenComposeAsync()
-        // Used for dependent async stages
-        // Returns flattened CompletableFuture instead of nested future
+        // Used for dependent async stages.
+        // Returns flattened CompletableFuture instead of nested future.
+        // Used when the next step in your chain also returns a CompletableFuture. It "flattens" the nested futures into one
         // ---------------------------------------------------
         CompletableFuture<String> future4 = CompletableFuture.supplyAsync(() -> {
             return "Step 1 is done";
@@ -91,7 +93,9 @@ public class CompletableFutureDemo {
 
         // ---------------------------------------------------
         // 5) thenAccept()
-        // Consumes final result and returns CompletableFuture<Void>
+        // Consumes final result and returns CompletableFuture<Void>.
+        // Used when you want to use the result (e.g., printing to console, saving to a database) but don't need to 
+        // pass a value further down the chain
         // ---------------------------------------------------
         CompletableFuture<Void> future5 = CompletableFuture.supplyAsync(() -> {
             return "Concept and ";
@@ -106,6 +110,7 @@ public class CompletableFutureDemo {
         // ---------------------------------------------------
         // 6) thenCombine()
         // Combines results of two independent futures
+        // Used to run two independent futures in parallel and combine their results once both are complete.
         // ---------------------------------------------------
         CompletableFuture<Integer> task1 = CompletableFuture.supplyAsync(() -> 10, executorService);
         CompletableFuture<String> task2 = CompletableFuture.supplyAsync(() -> "k", executorService);
